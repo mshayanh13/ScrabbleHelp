@@ -142,15 +142,6 @@ struct Scrabble {
         startGame()
     }
     
-    func getWordPointFor(_ word: String) -> Int {
-        var points = 0
-        for letter in word {
-            let letter = String(letter).uppercased()
-            points += letterPoints[letter]!
-        }
-        return points
-    }
-    
     mutating func cheat() {
         let results = makeCombos()
         for result in results {
@@ -172,5 +163,14 @@ struct Scrabble {
         trie.findWordsFromLettersArray(&letters, start: 0, end: letters.count-1, results: &results)
         
         return Array<String>(results)
+    }
+    
+    func getWordPointFor(_ word: String) -> Int {
+        var points = 0
+        for letter in word {
+            let letter = String(letter).uppercased()
+            points += letterPoints[letter]!
+        }
+        return points
     }
 }
